@@ -1,23 +1,22 @@
 const { DataTypes } = require("sequelize");
 const connection = require('../db/connection');
 
-const Tarefas = connection.define('tasks', {
+const tasks = connection.define('tasks', {
   id:{
     type:DataTypes.INTEGER,
     primaryKey:true,
-    autoIncrement:true    
+    autoIncrement:true
   },
-  title:{
+  title: {
     type:DataTypes.STRING,
-    allowNull:false,
-    require:true
+    require:true,
+    allowNull:false
   },
   status:{
     type:DataTypes.STRING,
     allowNull:false,
     require:true
   }
-});
+})
 
-module.exports = Tarefas;
-
+module.exports = tasks;
