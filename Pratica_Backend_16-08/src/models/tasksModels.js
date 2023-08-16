@@ -1,23 +1,22 @@
 const Tarefas = require('./Tarefas');
 
-
 const createdTasks = async (task) => {
   const {title,status} = task;
   const createTasks = await Tarefas.create({
     title:title,
     status:status
-  })
-  return {id:createTasks.id}
+  });
+  return {id:createTasks.id};
 };
 
-const getAll = async () => {
+const showredTasks = async () => {
   const show = await Tarefas.findAll();
-  return show;  
+  return show;
 }
 
-const shoredTasks = async (id) => {
-  const showTasks = await Tarefas.findByPk(id)
-  return showTasks;
+const getAll = async (id)=> {
+  const show = await Tarefas.findByPk(id);
+  return show;
 }
 
 const updatedTasks = async (id,task) => {
@@ -28,20 +27,22 @@ const updatedTasks = async (id,task) => {
   },{
     where:{id:id}
   })
-  return updateTasks
-};
+  return updateTasks;
+}
 
-const removedTasks = async (id) => {
-  const deleteTasks = await Tarefas.destroy({
-    where:{id}
+const remodevTasks = async (id) => {
+  const deleteTask = await Tarefas.destroy({
+    where:{id:id}
   });
-  return deleteTasks;
+
+  return deleteTask;
+
 }
 
 module.exports = {
   createdTasks,
+  showredTasks,
   getAll,
-  shoredTasks,
   updatedTasks,
-  removedTasks
+  remodevTasks
 };
